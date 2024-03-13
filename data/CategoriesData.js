@@ -30,7 +30,7 @@ export const categoriesData = [
         icon: 'customerservice',
     },
     {
-        _id: 5,
+        _id: 6,
         name: 'Accessories',
         path: 'accessories',
         icon: 'windowso',
