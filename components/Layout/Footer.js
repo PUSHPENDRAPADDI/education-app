@@ -33,7 +33,10 @@ const Footer = () => {
         <Text style={[styles.iconText, route.name === 'Cart' && styles.active]}>Cart</Text>
       </TouchableOpacity>
       <TouchableOpacity style={styles.menuContainer}
-        onPress={() => alert('Click on Logout page')}>
+        onPress={() => {
+          alert('Logout Successfully'),
+            navigation.navigate('login')
+        }}>
         <AntDesign style={styles.icon} name='logout' />
         <Text style={styles.iconText}>Logout</Text>
       </TouchableOpacity>
