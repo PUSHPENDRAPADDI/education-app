@@ -15,12 +15,12 @@ const Footer = () => {
         <Text style={[styles.iconText, route.name === 'home' && styles.active]}>Home</Text>
       </TouchableOpacity>
       <TouchableOpacity style={styles.menuContainer}
-        onPress={() => alert('Click on notification page')}>
+        onPress={() => navigation.navigate('notification')}>
         <AntDesign style={[styles.icon, route.name === 'notification' && styles.active]} name='bells' />
         <Text style={[styles.iconText, route.name === 'notification' && styles.active]}>Notification</Text>
       </TouchableOpacity>
       <TouchableOpacity style={styles.menuContainer}
-        onPress={() => alert('Click on Account page')}>
+        onPress={() => navigation.navigate('account')}>
         <AntDesign style={[styles.icon, route.name === 'account' && styles.active]} name='user' />
         <Text style={[styles.iconText, route.name === 'account' && styles.active]}>account</Text>
       </TouchableOpacity>
