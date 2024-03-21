@@ -12,12 +12,13 @@ import Account from './screens/Account/Account';
 import Notifications from './screens/Account/Notifications';
 import Profile from './screens/Account/Profile';
 import MyOrders from './screens/Account/MyOrders';
+import Dashboard from './screens/Admin/Dashoard';
 
 export default function App() {
   const Stack = createNativeStackNavigator();
   return (
     <NavigationContainer>
-      <Stack.Navigator initialRouteName='myorders' >
+      <Stack.Navigator initialRouteName='adminPanel' >
         <Stack.Screen name='home' component={Home} options={{ headerShown: false }} />
         <Stack.Screen name='about' component={About} />
         <Stack.Screen name='productDetails' component={ProductDetails} />
@@ -27,6 +28,7 @@ export default function App() {
         <Stack.Screen name='notification' component={Notifications} />
         <Stack.Screen name='profile' component={Profile} />
         <Stack.Screen name='myorders' component={MyOrders} />
+        <Stack.Screen name='adminPanel' component={Dashboard} />
         <Stack.Screen name='login' component={Login}
           options={{ headerShown: false }}
         />

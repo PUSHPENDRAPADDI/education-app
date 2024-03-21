@@ -54,7 +54,9 @@ const Account = ({ navigation }) => {
                             Notifications
                         </Text>
                     </TouchableOpacity>
-                    <TouchableOpacity style={styles.btn}>
+                    <TouchableOpacity style={styles.btn}
+                        onPress={() => navigation.navigate('adminPanel')}
+                    >
                         <AntDesign
                             style={styles.btnText}
                             name='windows' />
