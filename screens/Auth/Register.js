@@ -1,22 +1,38 @@
 import { View, Text, Image, StyleSheet, TouchableOpacity } from 'react-native'
 import React, { useState } from 'react'
 import InputBox from '../../components/Form/InputBox';
+import { useDispatch } from 'react-redux';
+import { register } from '../../redux/features/auth/userActions';
+import { useReduxStateHook } from '../../hooks/customHooks';
 
 const Register = ({ navigation }) => {
+    const dispatch = useDispatch();
     const loginImage = "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSDM3hN-VCNh90Pop53o8bQ1L_W8kn4LhZf7Q&usqp=CAU";
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const [name, setName] = useState('')
     const [address, setAddress] = useState('')
     const [city, setCity] = useState('')
-    const [contact, setContact] = useState('')
+    const [country, setCountry] = useState('abc')
+    const [phone, setPhone] = useState('')
+    const [answer, setAnswer] = useState('')
 
     const handleRegister = () => {
-        if (!email || !password || !name || !address || !city || !contact) {
+        if (!email ||
+            !password ||
+            !name ||
+            !address ||
+            !city ||
+            !phone ||
+            !country ||
+            !answer) {
             return alert('Please provide all fields')
         }
-        alert("Register Successfully");
-        navigation.navigate('login')
+        const formData = {
+            email, password, name, address, city, country, phone, answer
+        }
+        dispatch(register(formData))
+        const loading = useReduxStateHook(navigation, 'login')
     }
 
     return (
@@ -53,10 +69,16 @@ const Register = ({ navigation }) => {
                 autoComplete={"country"}
             />
             <InputBox
-                placeholder={'Enter Your Contact No'}
-                value={contact}
-                setValue={setContact}
-                autoComplete={"tel"}
+                placeholder={'Enter Your Contact No '}
+                value={phone}
+                setValue={setPhone}
+                autoComplete={"name"}
+            />
+            <InputBox
+                placeholder={"Enter You favrite dish"}
+                value={answer}
+                setValue={setAnswer}
+                autoComplete={"name"}
             />
             <View style={styles.btnContainer}>
                 <TouchableOpacity style={styles.loginBtn}

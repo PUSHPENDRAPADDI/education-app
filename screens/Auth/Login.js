@@ -1,23 +1,34 @@
-import { View, Text, TextInput, TouchableOpacity, Image, StyleSheet } from 'react-native'
+import { View, Text, TouchableOpacity, Image, StyleSheet } from 'react-native'
 import React, { useState } from 'react'
 import InputBox from '../../components/Form/InputBox'
+import { useDispatch } from 'react-redux'
+import { login } from '../../redux/features/auth/userActions'
+import { useReduxStateHook } from '../../hooks/customHooks'
 
 const Login = ({ navigation }) => {
     const loginImage = "https://cdn-icons-png.flaticon.com/512/5087/5087579.png";
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
 
+    // hooks
+    const dispatch = useDispatch()
+    const loading = useReduxStateHook(navigation, "home")
+
+    const resetFrom = () => {
+        setEmail("")
+        setPassword('')
+    }
     const handleLogin = () => {
         if (!email || !password) {
             return alert('Please Add email or Password')
         }
-        alert("Login Successfully");
-        navigation.navigate('home')
+        dispatch(login(email, password))
     }
 
     return (
         <View style={styles.container}>
             <Image style={styles.image} source={{ uri: loginImage }} />
+            {loading && <Text>Loading ...</Text>}
             <InputBox
                 value={email}
                 placeholder={'Enter Your Email'}

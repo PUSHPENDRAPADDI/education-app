@@ -5,7 +5,6 @@ import FontAwesome from 'react-native-vector-icons/FontAwesome';
 const Header = () => {
     const [searchText, setSearchtText] = useState('');
     const handleSearh = () => {
-        console.log(searchText);
         setSearchtText('')
     }
     return (

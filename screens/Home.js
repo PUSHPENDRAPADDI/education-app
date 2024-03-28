@@ -1,28 +1,26 @@
-import { StyleSheet } from 'react-native'
-import React, { Component } from 'react'
+import React, { useEffect } from 'react'
 import Layout from '../components/Layout/Layout';
 import Categories from '../components/category/Categories';
 import Banner from '../components/Banner/Banner';
 import Products from '../components/Products/Products';
 import Header from '../components/Layout/Header';
+import { useDispatch, useSelector } from 'react-redux'
+import { getUserData } from '../redux/features/auth/userActions';
 
-export default class Home extends Component {
-    render() {
-        return (
-            <Layout>
-                <Header />
-                <Categories />
-                <Banner />
-                <Products />
-            </Layout>
-        )
-    }
+
+const Home = () => {
+    const { user } = useSelector(state => state.userReducer)
+    const dispatch = useDispatch();
+    useEffect(() => {
+        dispatch(getUserData())
+    }, [dispatch])
+    return (
+        <Layout>
+            <Header />
+            <Categories />
+            <Banner />
+            <Products />
+        </Layout>
+    )
 }
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor: '#fff',
-        alignItems: 'center',
-        justifyContent: 'center',
-    },
-});
+export default Home;
